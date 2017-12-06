@@ -1,0 +1,87 @@
+<div>
+	<nav>
+		<div class="nav-wrapper  blue-grey lighten-4">
+			<span class="navName">Hi, {{ databaseService.showUsername }}!</span>
+			<ul id="nav-mobile" class="right hide-on-med-and-down">    
+				<li><a [routerLink]="['/recipes']">Search Recipes</a></li>
+				<li><a [routerLink]="['/dashboard']">Dashboard</a></li>
+				<li><a href="/logout">Logout</a></li>
+			</ul>
+		</div>
+	</nav>
+</div>
+<br>
+<!-- ADDING YOUR OWN PERSONAL RECIPES -->
+<div id="addrecipe_form">
+	<button id="addrecipe_button" 
+	class="waves-effect waves-purple btn" (click)="toggleForm()"> Share your own recipes!
+</button>
+
+<form id="form1" #form  #recipeForm="ngForm"  (submit)="create_item()">
+
+	<p>Name: <input type="text" name="name" [(ngModel)]="new_item.name" required minlength="2" #name="ngModel"></p>
+	<span *ngIf="!name.valid">Food title is required!!!</span>
+
+	<p>Picture: <input #file type="file" name="picture" [(ngModel)]="item_pic"></p>
+
+	<p>Ingredients: <textarea class="textarea" cols="80" rows="5" name="ingredients" [(ngModel)]="new_item.ingredients" required minlength="4" #ingredients="ngModel" ></textarea></p>
+
+	<span *ngIf="!ingredients.valid">Ingredients are required!!!</span>
+
+	<p>Instructions: <textarea class="textarea" cols="80" rows="5" name="instructions" [(ngModel)]="new_item.instructions" required minlength="4" #instructions="ngModel" ></textarea></p>
+
+	<span *ngIf="!instructions.valid">Instructions are required!!!</span>
+	<p><input type="hidden" name="creator_id" value="{{ databaseService.userId }}"></p>
+	<p><input type="hidden" name="creator" value="{{ databaseService.showUsername }}"></p>
+
+
+	<p><input type="submit" class="waves-effect waves-purple btn" value="Share Recipe" [disabled]="!recipeForm.valid"></p>
+</form>
+{{ new_item | json }}
+</div>
+<!-- THE END OF ADDING CUSTOM RECIPES  -->
+
+<div class="input-field col s6">
+	<input type="text" name="search" class="validate" [(ngModel)]="search">
+	<label for="ingredients">Search....</label>
+</div>
+
+<div class="row">
+	<h3> Favorite Recipes</h3>
+	<div class="rec_wrap">
+		<div class="img_squ" *ngFor="let favorite of favorites | filter: search">
+			<p>{{ favorite.title }}</p>
+			<a 
+			target="_blank" 
+			href="http://food2fork.com/view/{{favorite.recipe_id}}"
+			class="hoverable rec_image"
+			[ngStyle]="{
+			'background-image': 'url(' + favorite.image_url + ')'
+		}"
+		>
+		<img class="size_setter" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/Transparent_square.svg/2000px-Transparent_square.svg.png" alt="">
+	</a>
+	<p>
+		<button class="waves-effect waves-purple btn" (click)="destroy(favorite.recipe_id)">Remove
+		</button>
+	</p>
+</div>
+</div>
+</div>
+
+<div class="row">
+	<div class="rec_wrap">
+		<div class="img_squ" *ngFor="let item of items">	
+			<p>{{ item.name}}</p>	
+			<button (click)="showOneRecipe(item)" class="hoverable rec_image" target="_blank"><img  class="picture_size_setter" src="imgs/{{item.picture}}" width="300px"></button>
+			<p>Remove from cookbook: </p>
+
+			<button (click)="deleteUserItem(item._id)" 
+			ng-click="addVisible()"
+			class="btn-floating btn-small waves-effect waves-light teal">
+			<i class="material-icons">delete</i>
+		</button>
+
+	</div>
+</div>
+</div>

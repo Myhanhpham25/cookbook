@@ -1,0 +1,46 @@
+<div>
+	<nav>
+		<div class="nav-wrapper  blue-grey lighten-4">
+			<span class="navName">Hi, {{ databaseService.showUsername }}!</span>
+			<ul id="nav-mobile" class="right hide-on-med-and-down">    
+				<li><a [routerLink]="['/cookbook']">Cookbook</a></li>
+				<li><a [routerLink]="['/recipes']">Search Recipes</a></li>
+				<li><a [routerLink]="['/dashboard']">Dashboard</a></li>
+				<li><a href="/logout">Logout</a></li>
+			</ul>
+		</div>
+	</nav>
+</div>
+
+<div>
+
+	<h4>Name: {{ databaseService.showOneItem.name }} !!!</h4>
+	<img  class="picture_size_setter center-align hover" src="imgs/{{databaseService.showOneItem.picture}}" width="400px">
+	<h3>Ingredients: {{ databaseService.showOneItem.ingredients }}</h3>
+	<h3>Instructions: {{ databaseService.showOneItem.instructions }}</h3>
+	<h3>Shared By: {{ databaseService.showOneItem.creator }}</h3>
+
+
+	<div class="row">
+		<div class="col s12 m5">
+			<div class="card-panel teal hoverable scroll">
+				<span class="white-text">
+					<h5 class="white-text">**Comment Board**</h5>
+					<h5 class="white-text" *ngFor="let comment of databaseService.showOneItem.comment">
+						<p class="white-text scroll">{{comment.poster_name}} says: {{comment.post}}</p>
+					</h5>
+				</span>
+			</div>
+		</div>
+	</div>
+
+
+	<div>
+		<div *ngIf="databaseService.showOneItem.creator_id == databaseService.userId ">
+			<button (click)="deleteItem(databaseService.showOneItem._id)" 
+			ng-click="addVisible()"
+			class="btn-floating btn-small waves-effect waves-light teal">
+			<i class="large material-icons">delete</i>
+		</button> Delete Recipe from the Library
+	</div>
+</div>

@@ -1,0 +1,76 @@
+<div>
+	<nav>
+		<div class="nav-wrapper">
+			<span class="navName">Hi, {{ databaseService.showUsername }}!</span>
+			<ul id="nav-mobile" class="right hide-on-med-and-down">    
+				<li><a [routerLink]="['/cookbook']">Cookbook</a></li>
+				<li><a [routerLink]="['/recipes']">Search Recipes</a></li>
+				<li><a href="/logout">Logout</a></li>
+			</ul>
+		</div>
+	</nav>
+</div>
+
+<div>
+	<h3>Everyone's favorite recipes!!!</h3>
+</div>
+
+<div class="input-field col s6">
+	<input type="text" name="search" class="validate" [(ngModel)]="search">
+	<label for="ingredients">Search....</label>
+</div>
+
+<div class="display" *ngFor="let user of users">
+	<span class="msg">{{message}}</span>
+	<h3>{{user.name}}'s Favorite Recipes</h3>
+	<div class="row">	
+		<div class="rec_wrap">
+			<div class="img_squ" *ngFor="let recipe of user.favorites | filter: search">
+				<p> {{ recipe.title }}</p>
+				<a 
+				target="_blank" 
+				href="http://food2fork.com/view/{{recipe.recipe_id}}"
+				class="hoverable rec_image"
+				[ngStyle]="{
+				'background-image': 'url(' + recipe.image_url + ')'
+			}"
+			>
+			<img class="size_setter" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/Transparent_square.svg/2000px-Transparent_square.svg.png" alt="">
+		</a>
+		Add to cookbook: <button (click)="saveRecipe(recipe)" 
+		ng-click="addVisible()"
+		class="btn-floating btn-small waves-effect waves-light teal">
+		<i class="material-icons">add</i>
+	</button>
+</div>
+</div>
+</div>
+
+<!-- display all the custom recipes from users  -->
+<div class="row">
+	<div class="rec_wrap">
+		<div class="img_squ" *ngFor="let item of user.favoriteItems">	
+			<p>{{ item.name}}</p>	
+			
+			<button (click)="showOneRecipe(item)" class="hoverable rec_image" target="_blank">
+				<img  class="picture_size_setter" src="imgs/{{item.picture}}" width="300px">
+			</button>
+			
+			Write a comment:  <button (click)="showCommentbox($event)" 
+			ng-click="addVisible()"
+			class="btn-floating btn-small waves-effect waves-light cyan pulse">
+			<i class="material-icons">create</i> 
+		</button> 
+
+
+		<form #commentForm="ngForm" class="add_commments" (submit)="new_comment(item)">
+
+			<textarea class="textarea" cols="80" rows="5" name="comment" 
+			[(ngModel)]="item.comment" required minlength="4" #add_comment="ngModel"></textarea>
+			<br>
+			<input type="submit" value="post" class="btn-floating btn-small waves-effect waves-light cyan" [disabled]="!commentForm.valid">
+		</form>
+	</div>
+</div>
+</div>
+

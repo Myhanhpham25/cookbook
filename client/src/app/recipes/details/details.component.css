@@ -1,0 +1,90 @@
+a{
+  text-decoration: underline;
+}
+
+h3 {
+  padding-left: 10px;
+  text-shadow: 2px 2px #cfd8dc;
+}
+
+
+#images  {
+	width: 300px;
+	height: 300px;
+	
+}
+
+.dishes {
+	display: inline-block;
+
+}
+
+.title{
+  text-decoration: none;
+  color: #fff;
+  background-color: #80deea;
+  text-align: center;
+  letter-spacing: .5px;
+  -webkit-transition: .2s ease-out;
+  transition: .2s ease-out;
+  cursor: pointer;
+}
+
+.right-align{
+  padding-right: 10px;
+  color: #009688;
+  font-size: 20px;
+}
+
+.display {
+  border: 5px solid teal;
+}
+
+#form1 {
+
+ display : none;
+ padding: 10px;
+
+} 
+
+.textarea{
+  height: auto;
+}
+
+.recipe_detail{
+  
+ display : none;
+}
+
+h3, h4, h5{
+  padding-left: 10px;
+  color: #009688;
+}
+
+#addrecipe_button{
+
+  margin-left: 20px;
+  padding: 0 5px;
+}
+
+.col {
+
+  margin-bottom: 10px;
+
+}
+
+.picture_size_setter{
+  padding-left: 50px
+}
+
+.scroll {
+ 
+  overflow: scroll;
+}
+
+.navName{
+  font-size: 40px;
+  color: #00bcd4;
+  padding-left: 20px;
+  text-shadow: 2px 2px #0091ea;
+}
