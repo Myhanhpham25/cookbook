@@ -15,9 +15,7 @@ export class UsersComponent implements OnInit {
 
   ngOnInit() {
   	this.new_user = new User
-  	this.new_user.name = "hanh"
-    this.new_user.email = "myhanhiie@gmail.com"
-    this.new_user.password = "password"
+
   }
 
   login(){
