@@ -22,7 +22,7 @@
 	<p>Name: <input type="text" name="name" [(ngModel)]="new_item.name" required minlength="2" #name="ngModel"></p>
 	<span *ngIf="!name.valid">Food title is required!!!</span>
 
-	<p>Picture: <input #file type="file" name="picture" [(ngModel)]="item_pic"></p>
+	<p>Picture (image size must be less than 1MB) : <input #file type="file" name="picture" [(ngModel)]="item_pic"></p>
 
 	<p>Ingredients: <textarea class="textarea" cols="80" rows="5" name="ingredients" [(ngModel)]="new_item.ingredients" required minlength="4" #ingredients="ngModel" ></textarea></p>
 
@@ -37,7 +37,7 @@
 
 	<p><input type="submit" class="waves-effect waves-purple btn" value="Share Recipe" [disabled]="!recipeForm.valid"></p>
 </form>
-{{ new_item | json }}
+
 </div>
 <!-- THE END OF ADDING CUSTOM RECIPES  -->
 

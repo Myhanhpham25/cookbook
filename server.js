@@ -12,7 +12,9 @@ app.use(express.static(path.join(__dirname, "./static")))
 app.use(express.static(path.join(__dirname, "./client/dist")))
 app.use(bodyParser.urlencoded({ extended: true}))
 app.use(bodyParser.json())
-app.use(fileUpload())
+app.use(fileUpload({
+  limits: { fileSize: 50 * 1024 * 1024 },
+}))
 
 app.use(session({secret: "really really secret", resave: false, saveUninitialized: true }))
 
