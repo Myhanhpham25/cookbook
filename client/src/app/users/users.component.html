@@ -1,6 +1,11 @@
 <div>
 
-  <div>
+
+  <div> 
+      <h5>Get delicious kitchen recipes, timeless and tasty meal ideas, and the inspiration to keep you cooking.</h5>
+  </div>
+
+    <div>
     <h3>Login/Register!</h3>
   </div>
 
@@ -9,14 +14,15 @@
 
       <div class="row">
         <div class="input-field col s7">
-          <input placeholder="Placeholder" name="name" type="text" class="validate" [(ngModel)]="new_user.name" required minlength="1" #name="ngModel" />
+          <input placeholder="Name" name="name" type="text" class="validate" [(ngModel)]="new_user.name" required minlength="1" #name="ngModel" />
           <label for="name">Name</label>
           <span *ngIf="!name.valid">Name is required!!!</span>
         </div>
 
         <div class="row">
           <div class="input-field col s7">
-            <input name="email" type="text" class="validate" [(ngModel)]="new_user.email" required minlength="1" #email="ngModel" />
+            <input name="email" type="text" class="validate" [(ngModel)]="new_user.email" required pattern="^\w+([.-]?\w+)@\w+([.-]?\w+)(.\w{2,3})+$" minlength="1" #email="ngModel" />
+
             <label for="email">Email</label>
             <span *ngIf="!email.valid">Email is required!!!</span>
           </div>
@@ -37,5 +43,5 @@
       </div>
     </form>
 
-  </div>
+
 </div>

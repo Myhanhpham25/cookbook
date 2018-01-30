@@ -46,8 +46,11 @@
 	<label for="ingredients">Search....</label>
 </div>
 
+
+<div class="scrollBox">
 <div class="row">
 	<h3> Favorite Recipes</h3>
+
 	<div class="rec_wrap">
 		<div class="img_squ" *ngFor="let favorite of favorites | filter: search">
 			<p>{{ favorite.title }}</p>
@@ -81,7 +84,7 @@
 			class="btn-floating btn-small waves-effect waves-light teal">
 			<i class="material-icons">delete</i>
 		</button>
-
-	</div>
+</div>
+</div>
 </div>
 </div>

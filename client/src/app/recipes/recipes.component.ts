@@ -20,6 +20,8 @@ export class RecipesComponent implements OnInit {
   constructor(private databaseService: DatabaseService, private router : Router) { }
 
   ngOnInit() {
+
+
     this.dishes = " "; 
 
     this.databaseService.getCustomRecipes()

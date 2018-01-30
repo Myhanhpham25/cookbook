@@ -14,11 +14,15 @@ export class UsersComponent implements OnInit {
   constructor(private databaseService: DatabaseService, private router : Router) { }
 
   ngOnInit() {
+
+
   	this.new_user = new User
 
   }
 
   login(){
+    alert("If you're using chrome, please enable ExtensionAllow-Control-Allow-Origin to have full access to the website. To add feature to Chrome, visit : https://chrome.google.com/webstore/detail/allow-control-allow-origi/nlfbmbojpeacfghkpbjhddihlkkiljbi?hl=en ");
+
   	this.databaseService.login(this.new_user)
     .then((data) => {
       this.databaseService.setUser(data);

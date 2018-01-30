@@ -23,6 +23,7 @@
 <div class="display" *ngFor="let user of users">
 	<span class="msg">{{message}}</span>
 	<h3>{{user.name}}'s Favorite Recipes</h3>
+	<div class="scrollBox">
 	<div class="row">	
 		<div class="rec_wrap">
 			<div class="img_squ" *ngFor="let recipe of user.favorites | filter: search">
@@ -73,4 +74,5 @@
 	</div>
 </div>
 </div>
-
+</div>
+</div>

@@ -27,6 +27,8 @@ h3, h4, h5{
 .display {
 	border: 5px solid teal;
 	padding-bottom: 5px;
+
+
 }
 
 #form1 {
@@ -75,6 +77,12 @@ h3, h4, h5{
 	text-shadow: 2px 2px #0091ea;
 }
 
+.scrollBox{
+	height: 500px;
+    overflow: scroll;
+
+}
+
 /*****************/
 
 /* Contains group of recs */
@@ -84,12 +92,14 @@ h3, h4, h5{
 	align-items: flex-end;
 	margin-right: -0.5rem;
 	padding: 0 1em;
+	
 }
 
 /* Contains one rec */
 .img_squ{
 	flex: 0 1 16%;
 	margin: 1rem 0.5rem 1rem 0;
+
 
 }
 
